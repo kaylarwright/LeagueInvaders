@@ -23,7 +23,6 @@ void setup() {
 	frame.setVisible(true);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.getContentPane().setPreferredSize(new Dimension(500,500));
-	frame.pack();
 	game.startGame();
 	frame.add(game);
 	frame.addKeyListener(game);
