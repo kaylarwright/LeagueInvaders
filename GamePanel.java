@@ -111,6 +111,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	void updateGameState() {
 		manager.update();
+		manager.manageEnemies();
+		manager.checkCollision();
+		manager.purgeObjects();
+		
 	}
 
 	void updateEndState() {
@@ -134,6 +138,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, LeagueInvader.x, LeagueInvader.y);
 		manager.draw(g);
+		
 	}
 
 	void drawEndState(Graphics g) {
