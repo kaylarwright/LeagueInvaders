@@ -8,6 +8,7 @@ ArrayList<Projectile> project = new ArrayList<Projectile>();
 ArrayList<Alien> AN = new ArrayList<Alien>();
 long enemyTimer = 0;
 int enemySpawnTime = 1000;
+int score = 0;
 
 ObjectManager(Rocketship r){
 	ship = r;
@@ -53,6 +54,7 @@ void  purgeObjects() {
 		Alien enemies = AN.get(j);
 		if(enemies.isAlive == false) {
 			AN.remove(enemies);
+			score ++;
 		}
 	}
 	for(int j = 0; j < project.size(); j++) {
@@ -78,5 +80,8 @@ void checkCollision() {
 			}
 		}
 	}
+}
+int getScore() {
+	return score;
 }
 }
