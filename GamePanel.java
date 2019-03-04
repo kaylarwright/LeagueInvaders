@@ -85,11 +85,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 				manager = new ObjectManager(rocket);
 			}
 		}
+		if( currentState == MENU_STATE) {
 		if(e.getKeyCode()== KeyEvent.VK_SPACE) {
-			currentState++;
 			JOptionPane.showMessageDialog(null, "Use the arrow keys to go up, down and side to side");
 			JOptionPane.showMessageDialog(null, "Press space to kill the aliens");
 			JOptionPane.showMessageDialog(null, "Do not touch the aliens");
+		}
 		}
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
 			rocket.up = true;
