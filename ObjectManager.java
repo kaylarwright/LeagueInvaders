@@ -3,85 +3,56 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class ObjectManager {
-Rocketship ship;
-ArrayList<Projectile> project = new ArrayList<Projectile>();
-ArrayList<Alien> AN = new ArrayList<Alien>();
+Mouse OUSE;
+ArrayList<Cat> tac = new ArrayList<Cat>();
 long enemyTimer = 0;
 int enemySpawnTime = 1000;
-int score = 0;
 
-ObjectManager(Rocketship r){
-	ship = r;
+
+
+ObjectManager(Mouse m){
+	OUSE = m;
 }
-void update() {
-	ship.update();
-	for(int i = 0; i < project.size(); i ++) {
-		Projectile pro = project.get(i);
-		pro.update();
-	}
-	for(int j = 0; j < AN.size(); j++) {
-		Alien enemies = AN.get(j);
+void update(){
+	OUSE.update();
+	for (int i = 0; i < tac.size(); i++) {
+		Cat enemies = tac.get(i);
 		enemies.update();
 	}
-	
 }
-void draw( Graphics g) {
-	ship.draw(g);
-	for(int i = 0; i < project.size(); i ++) {
-		Projectile pro = project.get(i);
-		pro.draw(g);
-	}
-	for(int j = 0; j < AN.size(); j++) {
-		Alien enemies = AN.get(j);
+void draw(Graphics g){
+	OUSE.draw(g);
+	for(int i = 0; i < tac.size(); i ++) {
+		Cat enemies = tac.get(i);
 		enemies.draw(g);
-		}
-	
+	}
 }
-void addProjectile(Projectile p) {
-	project.add(p);
-}
-void addAlien(Alien a) {
-	AN.add(a);
+void addCat(Cat c) {
+	tac.add(c);
 }
 public void manageEnemies() {
-	if(System.currentTimeMillis()-enemyTimer>=enemySpawnTime) {
-		addAlien(new Alien(new Random().nextInt(LeagueInvader.x), 0,50,50));
+	if(System.currentTimeMillis()- enemyTimer >= enemySpawnTime) {
+		addCat(new Cat(new Random().nextInt(Game.WIDTH), 0, 50,50));
 		enemyTimer = System.currentTimeMillis();
 	}
 }
-void  purgeObjects() {
-	for(int j = 0; j < AN.size(); j++) {
-		Alien enemies = AN.get(j);
+void purgeObject() {
+	for(int i =0; i < tac.size(); i++) {
+		Cat enemies = tac.get(i);
 		if(enemies.isAlive == false) {
-			AN.remove(enemies);
-			score ++;
-		}
-	}
-	for(int j = 0; j < project.size(); j++) {
-		Projectile pro = project.get(j);
-		if(pro.isAlive == false) {
-			project.remove(pro);
+			tac.remove(enemies);
+			
 		}
 	}
 }
 void checkCollision() {
-	for(Alien a : AN) {
-		if(ship.collisionBox.intersects(a.collisionBox)) {
-			ship.isAlive = false;
+	for(Cat c : tac) {
+		if(OUSE.collisionBox.intersects(c.collisionBox)){
+			System.out.println("j");
+			OUSE.isAlive = false;
 		}
 	}
-	for(int i = 0; i < project.size(); i++) {
-		Projectile pro = project.get(i);
-		for(int j = 0; j < AN.size(); j++) {
-			Alien enemis = AN.get(j);
-			if(pro.collisionBox.intersects(enemis.collisionBox)) {
-				pro.isAlive = false;
-				enemis.isAlive = false;
-			}
-		}
-	}
+	
 }
-int getScore() {
-	return score;
-}
+
 }
