@@ -5,12 +5,14 @@ public class Cat extends GameObject{
 Cat(int x, int y, int width, int height){
 	super(x,y,width,height);
 }
+
+int angle = 0;
 void update() {
 	super.update();
-	y++;
+	y += 5;
+	x += Math.sin(angle++ * 0.1) * 10;
 }
 void draw(Graphics g) {
-	g.setColor(Color.BLUE);
-	g.fillRect(x, y, width, height);
+	g.drawImage(GamePanel.catImg, x, y, width, height, null);
 }
 }

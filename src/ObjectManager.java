@@ -6,7 +6,7 @@ public class ObjectManager {
 Mouse OUSE;
 ArrayList<Cat> tac = new ArrayList<Cat>();
 long enemyTimer = 0;
-int enemySpawnTime = 1000;
+int enemySpawnTime = 500;
 
 
 

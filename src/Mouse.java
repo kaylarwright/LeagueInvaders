@@ -9,7 +9,7 @@ boolean right = false;
 boolean left = false;
 	Mouse(int x, int y, int width, int height){
 		super(x,y,width,height);
-		speed = 20;
+		speed = 10;
 	}
 	void update(){
 		super.update();
@@ -25,6 +25,15 @@ boolean left = false;
 	if (left == true){
 		x -= speed;
 	}
+	if (x <= 0) {
+		x = 0;
+	}
+	if ( x >= Game.WIDTH) {
+		x = Game.WIDTH;
+	}
+	
+	
+	
 	}
 	void draw(Graphics g){
 		g.drawImage(GamePanel.mouseImg, x, y, width, height, null);
